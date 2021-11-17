@@ -1,5 +1,3 @@
-from os import close
-import pandas as pd
 import openpyxl
 import PySimpleGUI as pag
 
@@ -19,16 +17,31 @@ class TelaPy:
         self.button, self.values = janela.Read()
 
     def  Iniciar(self):
+        #DATAS ENTRADA
         dia = self.values['dia']
         mes = self.values['mes']
         ano = self.values['ano']
-        #CRIANDO LINHAS NECESSÁRIAS
+        #CRIANDO PLANILHA
         book = openpyxl.Workbook()
         data_page = book['Sheet']
-        book.save('Planilha.xlsx')
-        #tentando escrever na planilha
-        for rows in data_page.iter_rows(min_row=1, max_row=31):
-            for cell in rows:
-                cell.value = mes
+        #GERADOR DE LINHAS COM DATAS
+        for c in range(1, (int(dia)) + 1):
+            data_page.append(['FOLHA DE SALÁRIOS',
+            '',
+            '',
+            '',
+            '',
+            '22.089,00',
+            '{}/{}/{}' .format(c, mes, ano)
+            ])
+            data_page.append(['TRANSM. DE ENERGIA',
+            '',
+            '',
+            '',
+            '',
+            '10.323,00',
+            '{}/{}/{}' .format(c, mes, ano)
+            ])
+            book.save('Planilha.xlsx')
 tela = TelaPy()
 tela.Iniciar()
