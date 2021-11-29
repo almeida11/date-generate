@@ -32,7 +32,7 @@ class TelaPy:
             '',
             '',
             '22.089,00',
-            '{}/{}/{}' .format(c, mes, ano)
+            f'{c}/{mes}/{ano}'
             ])
             data_page.append(['TRANSM. DE ENERGIA',
             '',
@@ -40,7 +40,7 @@ class TelaPy:
             '',
             '',
             '10.323,00',
-            '{}/{}/{}' .format(c, mes, ano)
+            f'{c}/{mes}/{ano}'
             ])
             book.save('Planilha.xlsx')
 tela = TelaPy()
